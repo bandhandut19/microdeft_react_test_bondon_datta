@@ -38,13 +38,13 @@ const Login = () => {
           />
         </div>
         <div className="grid w-full max-w-sm items-center gap-1.5">
-          <Label htmlFor="email" className="text-lg">
+          <Label htmlFor="password" className="text-lg">
             Password
           </Label>
           <Input
             type="password"
             className="text-purple-600 py-6"
-            id="email"
+            id="password"
             placeholder="Enter Your Password"
             required
             {...register("password")}
@@ -62,7 +62,7 @@ const Login = () => {
       <div>
         <div className="text-sm">
           <h1 className="text-center pt-5 ">
-            Not a user ?{" "}
+            Not an user ?{" "}
             <span className="bg-purple-300  text-black px-4 py-1 ">
               <Link to={"/register"}> Register Now ! </Link>{" "}
             </span>
