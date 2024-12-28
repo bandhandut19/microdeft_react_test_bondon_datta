@@ -1,20 +1,42 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useForm } from "react-hook-form";
 import { Input } from "../UI/input";
 import { Label } from "../UI/label";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import IRegsiterType from "@/types/registerType";
+
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "../UI/tooltip";
+import { useRegisterUserMutation } from "@/redux/User/userApi";
+import IErrorResponseType from "@/types/errorResponseType";
+import { toast } from "sonner";
 const Register = () => {
   const { register, handleSubmit, reset } = useForm<IRegsiterType>();
+  const [registerUser] = useRegisterUserMutation();
+  const navigate = useNavigate();
 
   const handleRegister = async (data: IRegsiterType) => {
-    console.log(data);
+    try {
+      if (data.password.length < 8) {
+        console.log("The password field must be at least 8 characters.");
+        return;
+      }
+      const res = await registerUser(data);
+      toast(res?.data?.status_message);
+      navigate("/login");
+    } catch (error: unknown) {
+      const errorResponse = error as IErrorResponseType;
+      if (errorResponse?.message) {
+        console.log(errorResponse?.message);
+      } else {
+        console.error("Unexpected error: ", error);
+      }
+    }
     reset();
   };
   return (
