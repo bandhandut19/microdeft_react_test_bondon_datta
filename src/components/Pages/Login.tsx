@@ -1,20 +1,58 @@
-import IloginType from "@/types/loginType";
 import { useForm } from "react-hook-form";
 import { Input } from "../UI/input";
 import { Label } from "../UI/label";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
+import { useLoginUserMutation } from "@/redux/User/userApi";
+import { toast } from "sonner";
+import IErrorResponseType from "@/types/errorResponseType";
+import { IloginType, IStoredUserData } from "@/types/loginType";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "../UI/tooltip";
+import { useAppDispatch } from "@/redux/hooks";
+import { addLoggedUserToken } from "@/redux/User/userSlice";
 const Login = () => {
   const { register, handleSubmit, reset } = useForm<IloginType>();
-
+  const [loginUser] = useLoginUserMutation();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const handleLogin = async (data: IloginType) => {
-    console.log(data);
+    try {
+      console.log(data);
+      if (data.password.length < 8) {
+        console.log("The password field must be at least 8 characters.");
+        return;
+      }
+      const res = await loginUser(data);
+      console.log(res);
+      if (!res?.data?.status) {
+        toast("Provided credentials are incorrect");
+        return;
+      } else {
+        toast(res?.data?.status_message);
+        const userData: IStoredUserData = {
+          token: res?.data?.data?.token,
+          userDetails: {
+            id: res?.data?.data?.user?.id,
+            name: res?.data?.data?.user?.name,
+            email: res?.data?.data?.user?.email,
+          },
+        };
+        dispatch(addLoggedUserToken(userData));
+        navigate("/");
+      }
+    } catch (error: unknown) {
+      const errorResponse = error as IErrorResponseType;
+      if (errorResponse?.message) {
+        console.log(errorResponse?.message);
+      } else {
+        console.error("Unexpected error: ", error);
+      }
+    }
     reset();
   };
   return (
