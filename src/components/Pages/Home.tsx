@@ -1,7 +1,15 @@
+import { useAppSelector } from "@/redux/hooks";
+import { RootState } from "@/redux/store";
+
 const Home = () => {
+  const userDetails = useAppSelector(
+    (state: RootState) => state.user.userDetails
+  );
   return (
     <div>
-      <h1>This is homepage</h1>
+      <h1 className="text-center font-bold bg-purple-600 text-white text-xl py-2">
+        Welcome {userDetails.name} !
+      </h1>
     </div>
   );
 };
