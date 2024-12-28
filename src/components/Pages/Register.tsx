@@ -75,8 +75,8 @@ const Register = () => {
       <div>
         <div className="text-sm">
           <h1 className="text-center pt-5 ">
-            Already an user ?{" "}
-            <span className="bg-purple-300  text-black px-4 py-1 ">
+            Already an user ?
+            <span className="underline   text-white cursor-pointer px-2 py-1 ">
               <Link to={"/login"}> Login Now ! </Link>{" "}
             </span>
           </h1>
