@@ -6,6 +6,7 @@ import Login from "@/components/Pages/Login";
 import Register from "@/components/Pages/Register";
 import { createBrowserRouter } from "react-router";
 import AllCourses from "../components/Pages/AllCourses";
+import PrivateRoute from "./PrivateRoute";
 
 const rootRoute = createBrowserRouter([
   {
@@ -19,7 +20,11 @@ const rootRoute = createBrowserRouter([
       },
       {
         path: "/all-courses",
-        element: <AllCourses></AllCourses>,
+        element: (
+          <PrivateRoute>
+            <AllCourses></AllCourses>,
+          </PrivateRoute>
+        ),
       },
     ],
   },

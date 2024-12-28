@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import logo from "../../../public/microdeft_logo.png";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
@@ -7,9 +7,11 @@ import { toast } from "sonner";
 const Navbar = () => {
   const userToken = useAppSelector((state: RootState) => state.user.token);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const handleLogout = () => {
     dispatch(removeLoggedUserToken());
     toast("Logged Out Successfully");
+    navigate("/");
   };
   return (
     <div className="navbar bg-purple-200">
