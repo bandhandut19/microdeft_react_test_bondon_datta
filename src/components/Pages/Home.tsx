@@ -6,7 +6,7 @@ const Home = () => {
     (state: RootState) => state.user.userDetails
   );
   return (
-    <div>
+    <div className="min-h-screen">
       {userDetails?.email ? (
         <h1 className="text-center font-bold bg-purple-600 text-white lg:text-xl py-2">
           Welcome {userDetails.name} !
