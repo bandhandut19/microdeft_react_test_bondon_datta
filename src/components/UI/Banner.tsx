@@ -15,14 +15,14 @@ const Banner = ({ sliderPhotos }: any) => {
   );
 
   return (
-    <div className="relative w-screen overflow-x-hidden ml-2 lg:ml-0">
+    <div className="relative w-screen overflow-x-hidden  lg:ml-0">
       <Carousel
         plugins={[autoplay.current]}
         onMouseEnter={() => autoplay.current.stop()}
         onMouseLeave={() => autoplay.current.play()}
-        className="w-full h-full"
+        className="lg:w-full lg:h-full"
       >
-        <CarouselContent className="w-full h-4/6">
+        <CarouselContent className="lg:w-full lg:h-4/6">
           {sliderPhotos.map((photo: string, index: number) => (
             <CarouselItem key={index} className="w-full h-full">
               <img

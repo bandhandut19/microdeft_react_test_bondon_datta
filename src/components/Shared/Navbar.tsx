@@ -14,7 +14,7 @@ const Navbar = () => {
     navigate("/");
   };
   return (
-    <div className="navbar bg-purple-200 px-10">
+    <div className="navbar bg-purple-200 lg:px-10">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
