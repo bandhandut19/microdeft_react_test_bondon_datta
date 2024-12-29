@@ -9,7 +9,7 @@ const PrivateRoute: React.FC<IPrivateRouteProps> = ({ children }) => {
   if (!userToken) {
     return <Navigate to={"/login"}></Navigate>;
   }
-  return <>{children}</>;
+  return <div>{children}</div>;
 };
 
 export default PrivateRoute;

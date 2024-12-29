@@ -6,5 +6,6 @@ export const baseApi = createApi({
     baseUrl: "https://react-interview.crd4lc.easypanel.host/api",
     // credentials: "include",
   }),
+  tagTypes: ["allcourses"],
   endpoints: () => ({}),
 });
