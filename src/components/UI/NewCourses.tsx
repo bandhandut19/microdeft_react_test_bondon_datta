@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import CustomTitle from "./CustomTitle";
 import { useGetAllCoursesQuery } from "@/redux/Course/courseApi";
-import { useState } from "react";
-import CustomTitle from "../UI/CustomTitle";
 import ICourseInfo from "@/types/addCourseType";
 import { FaAddressBook } from "react-icons/fa";
-const Courses = () => {
-  const [currentPage, setCurrentPage] = useState(0);
+
+const NewCourses = () => {
   const colorMap: Record<string, string> = {
     red: "bg-red-600",
     blue: "bg-blue-600",
@@ -13,16 +12,18 @@ const Courses = () => {
     yellow: "bg-yellow-600",
     Yellow: "bg-yellow-600",
   };
-  const { data } = useGetAllCoursesQuery({
-    params: currentPage,
-  });
+  const { data } = useGetAllCoursesQuery({});
   const courseData = data?.data?.data;
-  console.log(setCurrentPage);
+  const NewCourses = courseData?.filter(
+    (course: ICourseInfo) => course?.badge_text === "New"
+  );
   return (
-    <div className="px-10 min-h-screen mb-10">
-      <CustomTitle title="All Courses"></CustomTitle>
+    <div className="mt-10">
+      <h1 className="text-center text-4xl font-bold py-2 text-white bg-purple-600">
+        New Courses
+      </h1>
       <div className="mt-10 grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5 ">
-        {courseData?.map((course: ICourseInfo) => (
+        {NewCourses?.map((course: ICourseInfo) => (
           <div
             key={course.id}
             className="card bg-purple-200 shadow-xl hover:scale-105"
@@ -65,4 +66,4 @@ const Courses = () => {
   );
 };
 
-export default Courses;
+export default NewCourses;

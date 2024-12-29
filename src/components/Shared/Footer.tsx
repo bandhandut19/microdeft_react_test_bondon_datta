@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="footer  flex flex-col bg-purple-200 text-purple-600 lg:p-5 lg:px-2 lg:py-10 items-center justify-center font-primary-one  lg:min-h-64">
+    <footer className="footer  flex flex-col mt-20 bg-purple-200 text-purple-600 lg:p-5 lg:px-2 lg:py-10 items-center justify-center font-primary-one  lg:min-h-64">
       <div className="grid lg:grid-cols-4 grid-cols-1 md:grid-cols-2 lg:gap-48 gap-10 lg:p-2 items-center justify-center">
         <nav className="flex flex-col mt-14 items-center justify-center text-center">
           <h1 className="lg:text-2xl text-xl text-center font-bold font-name mb-5">
