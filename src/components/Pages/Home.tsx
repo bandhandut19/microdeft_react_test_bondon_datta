@@ -21,7 +21,7 @@ const Home = () => {
       <div className="overflow-hidden">
         <Banner sliderPhotos={sliderPhotos}></Banner>
       </div>
-      <div className="px-10">
+      <div className="lg:px-10">
         <FeaturedCourses></FeaturedCourses>
         <NewCourses></NewCourses>
       </div>

@@ -23,11 +23,11 @@ const NewCourses = () => {
   );
   return (
     <div className="mt-10">
-      <h1 className="text-center text-4xl font-bold py-2 text-white bg-purple-600">
+      <h1 className="text-center lg:text-4xl text-xl font-bold py-2 text-white bg-purple-600">
         New Courses
       </h1>
       {userDetails?.email ? (
-        <div className="mt-10 grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5 ">
+        <div className="mt-10 px-5 lg:px-0 grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5 ">
           {NewCourses?.map((course: ICourseInfo) => (
             <div
               key={course.id}
