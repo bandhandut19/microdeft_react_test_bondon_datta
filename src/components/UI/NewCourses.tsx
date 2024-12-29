@@ -4,6 +4,7 @@ import ICourseInfo from "@/types/addCourseType";
 import { FaAddressBook } from "react-icons/fa";
 import { useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
+import LoaderDisplay from "./LoaderDisplay";
 
 const NewCourses = () => {
   const colorMap: Record<string, string> = {
@@ -16,11 +17,14 @@ const NewCourses = () => {
   const userDetails = useAppSelector(
     (state: RootState) => state.user.userDetails
   );
-  const { data } = useGetAllCoursesQuery({});
+  const { data, isLoading } = useGetAllCoursesQuery({});
   const courseData = data?.data?.data;
   const NewCourses = courseData?.filter(
     (course: ICourseInfo) => course?.badge_text === "New"
   );
+  if (isLoading) {
+    return <LoaderDisplay></LoaderDisplay>;
+  }
   return (
     <div className="mt-10">
       <h1 className="text-center lg:text-4xl text-xl font-bold py-2 text-white bg-purple-600">

@@ -4,6 +4,7 @@ import { useState } from "react";
 import CustomTitle from "../UI/CustomTitle";
 import ICourseInfo from "@/types/addCourseType";
 import { FaAddressBook } from "react-icons/fa";
+import LoaderDisplay from "../UI/LoaderDisplay";
 const Courses = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const colorMap: Record<string, string> = {
@@ -13,10 +14,13 @@ const Courses = () => {
     yellow: "bg-yellow-600",
     Yellow: "bg-yellow-600",
   };
-  const { data } = useGetAllCoursesQuery({
+  const { data, isLoading } = useGetAllCoursesQuery({
     params: currentPage,
   });
   const courseData = data?.data?.data;
+  if (isLoading) {
+    return <LoaderDisplay></LoaderDisplay>;
+  }
   console.log(setCurrentPage);
   return (
     <div className="px-10 min-h-screen mb-10">

@@ -4,6 +4,7 @@ import ICourseInfo from "@/types/addCourseType";
 import { FaAddressBook } from "react-icons/fa";
 import { useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
+import LoaderDisplay from "./LoaderDisplay";
 
 const FeaturedCourses = () => {
   const colorMap: Record<string, string> = {
@@ -16,11 +17,14 @@ const FeaturedCourses = () => {
   const userDetails = useAppSelector(
     (state: RootState) => state.user.userDetails
   );
-  const { data } = useGetAllCoursesQuery({});
+  const { data, isLoading } = useGetAllCoursesQuery({});
   const courseData = data?.data?.data;
   const FeaturedCourses = courseData?.filter(
     (course: ICourseInfo) => course?.badge_text === "Featured"
   );
+  if (isLoading) {
+    return <LoaderDisplay></LoaderDisplay>;
+  }
   //   console.log(FeaturedCourses);
   return (
     <div className="mt-10">
