@@ -1,5 +1,7 @@
 import { useAppSelector } from "@/redux/hooks";
 import { RootState } from "@/redux/store";
+import Banner from "../UI/Banner";
+import { sliderPhotos } from "../utils/sliderPhotos";
 
 const Home = () => {
   const userDetails = useAppSelector(
@@ -14,6 +16,9 @@ const Home = () => {
       ) : (
         ""
       )}
+      <div className="overflow-hidden">
+        <Banner sliderPhotos={sliderPhotos}></Banner>
+      </div>
     </div>
   );
 };
