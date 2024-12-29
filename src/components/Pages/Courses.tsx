@@ -13,10 +13,11 @@ const Courses = () => {
     yellow: "bg-yellow-600",
     Yellow: "bg-yellow-600",
   };
-  const { data, isLoading } = useGetAllCoursesQuery({
+  const { data } = useGetAllCoursesQuery({
     params: currentPage,
   });
   const courseData = data?.data?.data;
+  console.log(setCurrentPage);
   console.log(courseData);
   return (
     <div className="px-10 min-h-screen mb-10">
