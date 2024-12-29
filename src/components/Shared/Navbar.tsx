@@ -75,7 +75,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="">
+        <div className="cursor-pointer" onClick={() => navigate("/")}>
           <img src={logo} alt="logo" className="lg:w-40 w-20 md:w-36" />
         </div>
       </div>

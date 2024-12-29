@@ -27,8 +27,13 @@ const Register = () => {
         return;
       }
       const res = await registerUser(data);
-      toast(res?.data?.status_message);
-      navigate("/login");
+      if (!res?.data?.status) {
+        toast("Something went wrong ! Kindly try again");
+        return;
+      } else {
+        toast(res?.data?.status_message);
+        navigate("/login");
+      }
     } catch (error: unknown) {
       const errorResponse = error as IErrorResponseType;
       if (errorResponse?.message) {
