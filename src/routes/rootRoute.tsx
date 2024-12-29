@@ -7,6 +7,7 @@ import Register from "@/components/Pages/Register";
 import { createBrowserRouter } from "react-router";
 import PrivateRoute from "./PrivateRoute";
 import Courses from "@/components/Pages/Courses";
+import AddCourses from "@/components/Pages/AddCourses";
 
 const rootRoute = createBrowserRouter([
   {
@@ -22,7 +23,15 @@ const rootRoute = createBrowserRouter([
         path: "/all-courses",
         element: (
           <PrivateRoute>
-            <Courses></Courses>,
+            <Courses></Courses>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/add-courses",
+        element: (
+          <PrivateRoute>
+            <AddCourses></AddCourses>
           </PrivateRoute>
         ),
       },

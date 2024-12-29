@@ -61,6 +61,18 @@ const Navbar = () => {
                 All Courses
               </NavLink>
             </li>
+            <li className="text-purple-600 font-bold text-lg">
+              <NavLink
+                to={"/add-courses"}
+                className={({ isActive }) =>
+                  `nav-link hover:bg-[#D7DFA3] hover:scale-110 duration-300 dark:text-black rounded-none text-sm  hover:text-[#1A4862] ${
+                    isActive ? "nav-link-active" : ""
+                  }`
+                }
+              >
+                Add Courses
+              </NavLink>
+            </li>
           </ul>
         </div>
         <div className="">
@@ -68,8 +80,8 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li className="text-purple-600 font-bold text-lg px-5 ">
+        <ul className="menu menu-horizontal px-1 flex gap-5">
+          <li className="text-purple-600 font-bold text-lg">
             <NavLink
               to={"/"}
               className={({ isActive }) =>
@@ -91,6 +103,18 @@ const Navbar = () => {
               }
             >
               All Courses
+            </NavLink>
+          </li>
+          <li className="text-purple-600 font-bold text-lg">
+            <NavLink
+              to={"/add-courses"}
+              className={({ isActive }) =>
+                `nav-link hover:bg-purple-600 hover:scale-110 duration-300 dark:text-black rounded-none text-xl  hover:text-white ${
+                  isActive ? "nav-link-active" : ""
+                }`
+              }
+            >
+              Add Courses
             </NavLink>
           </li>
         </ul>

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useGetAllCoursesQuery } from "@/redux/Course/courseApi";
 import { useState } from "react";
+import CustomTitle from "../UI/CustomTitle";
 
 const Courses = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -13,9 +14,7 @@ const Courses = () => {
   console.log(data);
   return (
     <div>
-      <h1 className="text-center text-3xl font-bold mt-5 text-purple-600">
-        All courses
-      </h1>
+      <CustomTitle title="All Courses"></CustomTitle>
     </div>
   );
 };
