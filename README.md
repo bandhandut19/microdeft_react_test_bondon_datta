@@ -51,7 +51,10 @@ Before you begin, ensure you have met the following requirements:
       npm run dev
   2. **Access the application:**
       Open your browser and navigate to http://localhost:5173.
-
+  3. ** Initial Email & Password**
+      Email: bondon21081@gmail.com
+      Password: 12345678
+     
 ---
 ## 🤝Contributing
 To contribute to this project, please follow these steps:
